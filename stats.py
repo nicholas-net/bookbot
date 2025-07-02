@@ -74,28 +74,28 @@ def sort_frequency(character_frequencies: dict) -> list:
         list: sorted list of dictionaries.
     """
 
-    #Holds the character dictionaries in a list
+    #Holds the character dictionaries in a list.
     sorted_dictionaries = []
 
-    #Loops through each character key and total value
+    #Loops through each character key and total value.
     for char, count in character_frequencies.items():
-        #Initializes a new seperate dictionary to hold each char and count pair
+        #Initializes a new seperate dictionary to hold each char and count pair.
         sorted_dictionaries.append({"char": char, "num": count})
-        # Sorts the list by largest count, in ascending order
+        # Sorts the list by largest count, in ascending order.
         sorted_dictionaries.sort(reverse=True,key=sort_on)
     return sorted_dictionaries
 
 
 def _analyze_book_path(book_path) -> str:
     """
-    Helper function provides modularity and encapsulates the logic
+    Helper function provides modularity and encapsulates the logic.
 
     Args:
-        (str) : book location in directory
+        (str) : book location in directory.
 
     Return:
         str: text printing what book and directory is being analyzed, otherwise
-        prints it cannot be found
+        prints it cannot be found.
     """
     import os
     if not os.path.exists(book_path):
@@ -110,6 +110,16 @@ def print_interface(book_path: str, total_word_count, char_frequencies):
     print("----------- Word Count ----------")
     print(f"Found {total_word_count} total words")
     print("--------- Character Count -------")
+
+    for dictionary in char_frequencies:
+        if not dictionary["char"].isalpha():
+            continue
+
+        print(f"{dictionary["char"]}: {dictionary["num"]}")
+
+    print("============= END ===============")
+
+
 
 
 
