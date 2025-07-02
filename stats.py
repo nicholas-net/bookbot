@@ -1,9 +1,9 @@
 def get_books_text(path_to_file) -> str:
     """
-    Opens the frankenstein book file and returns the contents of the book as a str.
+    Opens the book file and returns the contents of the book as a str.
 
     Args:
-            path_to_file : relative directory location of the frankenstein file.
+            path_to_file : relative directory location of the file.
 
     Returns:
         str: the text of the frankenstein book.
@@ -16,11 +16,11 @@ def get_books_text(path_to_file) -> str:
 
 def get_number_of_words(book_text: str) -> int:
     """
-    Splits each word from the frankenstein file into an array. Total counter represents the number of words
+    Splits each word from the file into an array. Total counter represents the number of words
     in the book. Increments every loop.
 
     Args:
-        (str) : frankenstein file text.
+       book_text (str) : books text.
 
     Returns
         int: total word count.
@@ -38,7 +38,7 @@ def get_character_frequency(book_text: str) -> dict:
     a key, value pair.
 
     Args:
-        (str) : frankenstein text.
+        book_text (str) : text file content.
 
     Returns:
         dict: dictionary with every characters frequency returned.
@@ -59,7 +59,7 @@ def sort_on(char_frequencies):
     Lets the sort function know what key to sort the dictionaries on.
 
     Args:
-        (dict) : dictionary of character frequencies from the frankenstein book.
+        char_frequencies (dict) : dictionary of character frequencies from the book.
     """
     return char_frequencies["num"]
 
@@ -68,7 +68,7 @@ def sort_frequency(character_frequencies: dict) -> list:
     Sort the character count in descending order.
 
     Args:
-        (dict) : dictionary of characters and frequency.
+        character_frequencies (dict) : dictionary of characters and frequency.
 
     Returns:
         list: sorted list of dictionaries.
@@ -91,9 +91,9 @@ def _analyze_book_path(book_path) -> str:
     Helper function provides modularity and encapsulates the logic.
 
     Args:
-        (str) : book location in directory.
+        book_path (str) : book location in directory.
 
-    Return:
+    Returns:
         str: text printing what book and directory is being analyzed, otherwise
         prints it cannot be found.
     """
@@ -103,7 +103,18 @@ def _analyze_book_path(book_path) -> str:
     return f"Analyzing book found at {book_path}..."
 
 
-def print_interface(book_path: str, total_word_count, char_frequencies):
+def print_interface(book_path: str, total_word_count, char_frequencies) -> None:
+    """
+    Prints book path, total words and total letters for the user to read in a clean console interface
+
+    Args:
+        (str) book_path :
+        (int) total_word_count :
+        (int) char_frequencies :
+
+    Returns:
+        organized console interface printing the path, word count, and character count.
+    """
 
     print("============ BOOKBOT ============")
     print(_analyze_book_path(book_path))
@@ -112,6 +123,7 @@ def print_interface(book_path: str, total_word_count, char_frequencies):
     print("--------- Character Count -------")
 
     for dictionary in char_frequencies:
+        # Only prints alphabetical letters.
         if not dictionary["char"].isalpha():
             continue
 
