@@ -6,10 +6,10 @@ from stats import get_number_of_words, get_books_text, get_character_frequency, 
 def main():
     book_path = "books/frankenstein.txt"
     text = get_books_text(book_path)
-    words = get_number_of_words(text)
+    num_words = get_number_of_words(text)
     dict = get_character_frequency(text)
     sorted_char_count = sort_frequency(dict)
-    print(print_interface(book_path, words, sorted_char_count))
+    print_interface(book_path, num_words, sorted_char_count)
 
 main()
 

@@ -59,7 +59,7 @@ def sort_on(char_frequencies):
     Lets the sort function know what key to sort the dictionaries on.
 
     Args:
-         (dict) : dictionary of character frequencies from the frankenstein book.
+        (dict) : dictionary of character frequencies from the frankenstein book.
     """
     return char_frequencies["num"]
 
@@ -86,12 +86,31 @@ def sort_frequency(character_frequencies: dict) -> list:
     return sorted_dictionaries
 
 
-def _analyze_book_path(book_path):
+def _analyze_book_path(book_path) -> str:
+    """
+    Helper function provides modularity and encapsulates the logic
+
+    Args:
+        (str) : book location in directory
+
+    Return:
+        str: text printing what book and directory is being analyzed, otherwise
+        prints it cannot be found
+    """
+    import os
+    if not os.path.exists(book_path):
+        return f"Error: no book found at {book_path}"
     return f"Analyzing book found at {book_path}..."
 
-def print_interface(book_path: str, total_words, char_frequencies):
 
-    return _analyze_book_path(book_path)
+def print_interface(book_path: str, total_word_count, char_frequencies):
+
+    print("============ BOOKBOT ============")
+    print(_analyze_book_path(book_path))
+    print("----------- Word Count ----------")
+    print(f"Found {total_word_count} total words")
+    print("--------- Character Count -------")
+
 
 
 
