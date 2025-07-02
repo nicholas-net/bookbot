@@ -20,17 +20,14 @@ def get_number_of_words(book_text: str) -> int:
     in the book. Increments every loop.
 
     Args:
-       book_text (str) : books text.
+        book_text (str) : books text.
 
     Returns
         int: total word count.
 
     """
     words = book_text.split()
-    total=0
-    for word in words:
-        total+=1
-    return total
+    return len(words)
 
 def get_character_frequency(book_text: str) -> dict:
     """
@@ -82,7 +79,7 @@ def sort_frequency(character_frequencies: dict) -> list:
         #Initializes a new seperate dictionary to hold each char and count pair.
         sorted_dictionaries.append({"char": char, "num": count})
         # Sorts the list by largest count, in ascending order.
-        sorted_dictionaries.sort(reverse=True,key=sort_on)
+    sorted_dictionaries.sort(reverse=True,key=sort_on)
     return sorted_dictionaries
 
 
